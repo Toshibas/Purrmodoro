@@ -56,7 +56,14 @@ npx @tauri-apps/cli@2 build
 
 The `.dmg` ends up in `src-tauri/target/release/bundle/dmg/`. Use `npx @tauri-apps/cli@2 dev` to run it with live reload.
 
-The app is not code-signed. The first time you open it, right-click it and choose **Open**, or run `xattr -cr /Applications/Purrmodoro.app`.
+The app is only ad-hoc signed (no paid Apple Developer account), so macOS blocks it the first time:
+
+- **"Apple could not verify…"**: click **Done**, then go to **System Settings → Privacy & Security**, scroll down, and click **Open Anyway** next to Purrmodoro.
+- **"Purrmodoro is damaged and can't be opened"**: macOS has quarantined the download. Run this once in Terminal, then open the app normally:
+
+```bash
+xattr -cr /Applications/Purrmodoro.app
+```
 
 ## Not in v1 yet
 
