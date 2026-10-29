@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Purrmodoro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="scene" width="120" height="84"></canvas>
+
+    <div id="winctl">
+      <button class="px small" id="btn-min" title="Minimise" data-icon="min"></button>
+      <button class="px small" id="btn-close" title="Close" data-icon="close"></button>
+    </div>
+
+    <div id="bar">
+      <button class="px" id="btn-play" title="Start / pause (Space)" data-icon="play"></button>
+      <button class="px" id="btn-reset" title="Reset (R)" data-icon="reset"></button>
+      <button class="px" id="btn-skip" title="Skip to next (S)" data-icon="skip"></button>
+      <span class="spacer" data-tauri-drag-region></span>
+      <button class="px" id="btn-settings" title="Settings" data-icon="gear"></button>
+    </div>
+
+    <div id="settings" class="hidden">
+      <div class="panel">
+        <h2>Settings</h2>
+        <label>Focus <span><input type="number" id="s-focus" min="1" max="180"> min</span></label>
+        <label>Short break <span><input type="number" id="s-short" min="1" max="180"> min</span></label>
+        <label>Long break <span><input type="number" id="s-long" min="1" max="180"> min</span></label>
+        <label>Long break every <span><input type="number" id="s-longEvery" min="1" max="12"> focus</span></label>
+        <label>Auto-start next <input type="checkbox" id="s-autoStart"></label>
+        <label>Volume <input type="range" id="s-volume" min="0" max="100"></label>
+        <label>Mute <input type="checkbox" id="s-mute"></label>
+        <label>Always on top <input type="checkbox" id="s-onTop"></label>
+        <label>Size
+          <select id="s-scale">
+            <option value="2">Small</option>
+            <option value="3">Medium</option>
+            <option value="4">Large</option>
+          </select>
+        </label>
+        <div class="row">Meow
+          <span>
+            <button class="txt" id="s-test">Test</button>
+            <button class="txt" id="s-pick">Own…</button>
+            <button class="txt" id="s-default">Default</button>
+          </span>
+        </div>
+        <p class="hint" id="s-sound-name"></p>
+        <input type="file" id="s-file" accept="audio/*" hidden>
+        <p class="hint">Click the time and type 4 digits (2530 = 25:30).<br>Space start/pause · R reset · S skip</p>
+        <button class="txt wide" id="s-done">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/font.js"></script>
+  <script src="js/sprites.js"></script>
+  <script src="js/cats.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

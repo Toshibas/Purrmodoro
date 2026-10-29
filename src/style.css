@@ -1,0 +1,127 @@
+:root {
+  --scale: 3;
+  --bar: 40px;
+  --ink: #4b3226;
+  --paper: #f4dfc4;
+  --wood: #e7c49b;
+  --edge: #b07a50;
+  --btn: #fff3e2;
+  --btn-down: #f0d6b4;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: #2a2022;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  color: var(--ink);
+}
+
+#app {
+  position: relative;
+  width: calc(120px * var(--scale));
+  height: calc(84px * var(--scale) + var(--bar));
+  background: var(--paper);
+  overflow: hidden;
+}
+
+#scene {
+  display: block;
+  width: 100%;
+  height: calc(84px * var(--scale));
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  cursor: grab;
+}
+
+/* ---- pixel buttons ---- */
+button.px {
+  width: 30px;
+  height: 26px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: var(--btn);
+  border: 2px solid var(--edge);
+  box-shadow: inset -2px -2px 0 var(--btn-down);
+  cursor: pointer;
+}
+button.px:active { box-shadow: inset 2px 2px 0 var(--btn-down); }
+button.px svg { width: 14px; height: 14px; fill: var(--ink); shape-rendering: crispEdges; }
+button.px.small { width: 20px; height: 18px; }
+button.px.small svg { width: 10px; height: 10px; }
+
+#bar {
+  height: var(--bar);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+  background: var(--wood);
+  border-top: 3px solid var(--edge);
+}
+#bar .spacer { flex: 1; align-self: stretch; }
+
+#winctl {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: flex;
+  gap: 3px;
+  opacity: 0;
+  transition: opacity .15s;
+}
+#app:hover #winctl { opacity: 1; }
+
+/* ---- settings ---- */
+#settings {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 32, 34, .55);
+  display: flex;
+  overflow: auto;
+}
+#settings .panel {
+  margin: auto;
+  width: min(330px, calc(100% - 12px));
+  background: var(--btn);
+  border: 3px solid var(--edge);
+  padding: 8px 10px;
+  font-size: 12px;
+}
+#settings h2 { margin: 0 0 6px; font-size: 14px; }
+#settings label, #settings .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 22px;
+}
+#settings input[type=number] {
+  width: 48px;
+  font: inherit;
+  border: 2px solid var(--edge);
+  background: #fff;
+  color: var(--ink);
+}
+#settings input[type=range] { width: 110px; accent-color: var(--edge); }
+#settings input[type=checkbox] { accent-color: var(--edge); }
+#settings select { font: inherit; border: 2px solid var(--edge); background: #fff; color: var(--ink); }
+button.txt {
+  font: inherit;
+  font-weight: bold;
+  color: var(--ink);
+  background: var(--wood);
+  border: 2px solid var(--edge);
+  padding: 1px 6px;
+  cursor: pointer;
+}
+button.txt:active { background: var(--btn-down); }
+button.wide { width: 100%; margin-top: 6px; padding: 3px; }
+.hint { margin: 4px 0; font-size: 10px; opacity: .75; }
+
+.hidden { display: none !important; }
